@@ -3,16 +3,6 @@
 namespace MathParserTestNS
 {
     /// <summary>
-    ///     Enumeration of value types
-    /// </summary>
-    public enum ValueType
-    {
-        Invalid,
-        String,
-        Constant
-    }
-
-    /// <summary>
     ///     Base class for values
     /// </summary>
     /// <remarks>see derived types</remarks>

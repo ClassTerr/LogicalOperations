@@ -62,10 +62,11 @@
     <Compile Include="LogicalOperations.Designer.cs">
       <DependentUpon>LogicalOperations.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyTextBox.cs">
+    <Compile Include="TextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Node.cs" />
+    <Compile Include="NodeType.cs" />
     <Compile Include="Operator.cs" />
     <Compile Include="ParserException.cs" />
     <Compile Include="Program.cs" />
@@ -74,6 +75,7 @@
     <Compile Include="TreeParser.cs" />
     <Compile Include="Value.cs" />
     <Compile Include="ValuesDictionary.cs" />
+    <Compile Include="ValueType.cs" />
     <Compile Include="VariableValue.cs">
       <SubType>UserControl</SubType>
     </Compile>

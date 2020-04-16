@@ -3,17 +3,6 @@
 namespace MathParserTestNS
 {
     /// <summary>
-    ///     Types of Node(s)
-    /// </summary>
-    public enum NodeType
-    {
-        Undefined,
-        Expression,
-        Variable,
-        Value
-    }
-
-    /// <summary>
     ///     Class Node, represents a Node in a tree data structure representation of a mathematical expression.
     /// </summary>
     [Serializable]
