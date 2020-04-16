@@ -4,12 +4,12 @@ using System.Globalization;
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Encapsulates a double value for parser to use as a value when evaluating expressions
+    ///     Encapsulates a double value for parser to use as a value when evaluating expressions
     /// </summary>
     public class DoubleValue : Value
     {
         /// <summary>
-        /// Creates an instace of type ValueType.Constant
+        ///     Creates an instace of type ValueType.Constant
         /// </summary>
         public DoubleValue()
         {
@@ -17,12 +17,12 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// The double value
+        ///     The double value
         /// </summary>
         public double Value { get; set; }
 
         /// <summary>
-        /// Returns the value as a string
+        ///     Returns the value as a string
         /// </summary>
         /// <param name="format">format provider to use</param>
         /// <returns>value as string</returns>
@@ -32,7 +32,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Returns the value as a string
+        ///     Returns the value as a string
         /// </summary>
         /// <returns>value as string</returns>
         public override string ToString()
@@ -41,7 +41,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Returns the double value
+        ///     Returns the double value
         /// </summary>
         /// <param name="format">unused parameter</param>
         /// <returns>value as double</returns>
@@ -51,7 +51,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Returns the double value
+        ///     Returns the double value
         /// </summary>
         /// <returns>value as double</returns>
         public override double ToDouble()
@@ -60,7 +60,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value 
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set as string</param>
         public override void SetValue(string value)
@@ -69,7 +69,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set as double</param>
         public override void SetValue(double value)
@@ -78,7 +78,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set as string</param>
         /// <param name="format">format provider to use when parsing the string to a double</param>
@@ -88,7 +88,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value as double</param>
         /// <param name="format">unused parameter</param>

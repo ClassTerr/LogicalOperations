@@ -4,32 +4,32 @@ using System.Runtime.Serialization.Formatters.Binary;
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Encapsulates the parsed expression tree and
-    /// provides methods for serialization
+    ///     Encapsulates the parsed expression tree and
+    ///     provides methods for serialization
     /// </summary>
     public class Expression
     {
-        private Node tree;
-
         /// <summary>
-        /// Creates instance
+        ///     Creates instance
         /// </summary>
-        public Expression()
-        {
-
-        }
+        public Expression() { }
 
         /// <summary>
-        /// Creates instance using the Node as the expression tree
+        ///     Creates instance using the Node as the expression tree
         /// </summary>
         /// <param name="tree">expression tree of Node instances</param>
         public Expression(Node tree)
         {
-            this.tree = tree;
+            this.ExpressionTree = tree;
         }
 
         /// <summary>
-        /// Serializes the expression to the stream
+        ///     Provides access to the expression tree
+        /// </summary>
+        public Node ExpressionTree { get; set; }
+
+        /// <summary>
+        ///     Serializes the expression to the stream
         /// </summary>
         /// <param name="stream">stream to write to</param>
         public void Save(Stream stream)
@@ -39,23 +39,14 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Attempts to load a serialized expression from the stream
+        ///     Attempts to load a serialized expression from the stream
         /// </summary>
         /// <param name="stream">stream to read from</param>
         public void Load(Stream stream)
         {
             var bin = new BinaryFormatter();
-            Node tree = bin.Deserialize(stream) as Node;
+            var tree = bin.Deserialize(stream) as Node;
             if (tree != null) ExpressionTree = tree;
-        }
-
-        /// <summary>
-        /// Provides access to the expression tree
-        /// </summary>
-        public Node ExpressionTree 
-        {
-            get { return tree; }
-            set { tree = value; }
         }
     }
 }

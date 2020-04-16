@@ -9,16 +9,16 @@ namespace MathParserTestNS
             InitializeComponent();
         }
 
-        public string Variable 
-        { 
-            get { return txtVariable.Text; }
-            set { txtVariable.Text = value; }
+        public string Variable
+        {
+            get => txtVariable.Text;
+            set => txtVariable.Text = value;
         }
 
-        public string Value 
-        { 
-            get { return txtValue.Text; }
-            set { txtValue.Text = value; }
+        public string Value
+        {
+            get => txtValue.Text;
+            set => txtValue.Text = value;
         }
     }
 }

@@ -1,14 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Dictionary of values
+    ///     Dictionary of values
     /// </summary>
     public class ValuesDictionary : IDictionary<string, Value>
     {
-        private IDictionary<string, Value> dictionary;
+        private readonly IDictionary<string, Value> dictionary;
 
         public ValuesDictionary()
         {
@@ -16,33 +17,33 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Adds a variable and string value 
-        /// </summary>
-        /// <param name="variable">variable</param>
-        /// <param name="value">string value</param>
-        public void Add(string variable, string value)
-        {
-            Add(variable, new StringValue(){ Value = value});
-        }
-
-        /// <summary>
-        /// Adds a variable and a double value
-        /// </summary>
-        /// <param name="variable">variable</param>
-        /// <param name="value">double value</param>
-        public void Add(string variable, double value)
-        {
-            Add(variable, new DoubleValue() { Value = value });
-        }
-
-        /// <summary>
-        /// Adds a variable and a Value instance as value
+        ///     Adds a variable and a Value instance as value
         /// </summary>
         /// <param name="variable">variable</param>
         /// <param name="value">value instance</param>
         public void Add(string variable, Value value)
         {
             dictionary.Add(variable, value);
+        }
+
+        /// <summary>
+        ///     Adds a variable and string value
+        /// </summary>
+        /// <param name="variable">variable</param>
+        /// <param name="value">string value</param>
+        public void Add(string variable, string value)
+        {
+            Add(variable, new StringValue { Value = value });
+        }
+
+        /// <summary>
+        ///     Adds a variable and a double value
+        /// </summary>
+        /// <param name="variable">variable</param>
+        /// <param name="value">double value</param>
+        public void Add(string variable, double value)
+        {
+            Add(variable, new DoubleValue { Value = value });
         }
 
         #region Standard Dictionary Method Implementations
@@ -52,19 +53,16 @@ namespace MathParserTestNS
             return dictionary.ContainsKey(key);
         }
 
-        public ICollection<string> Keys
-        {
-            get { return dictionary.Keys; }
-        }
+        public ICollection<string> Keys => dictionary.Keys;
 
         public bool Remove(string key)
         {
             Value value = null;
 
             dictionary.TryGetValue(key, out value);
-            bool removed = dictionary.Remove(key);
+            var removed = dictionary.Remove(key);
 
-            if (removed && value != null) 
+            if (removed && value != null)
                 value.Type = ValueType.Invalid;
 
             return removed;
@@ -75,20 +73,14 @@ namespace MathParserTestNS
             return dictionary.TryGetValue(key, out value);
         }
 
-        public ICollection<Value> Values
-        {
-            get { return dictionary.Values; }
-        }
+        public ICollection<Value> Values => dictionary.Values;
 
         public Value this[string key]
         {
-            get
-            {
-                return dictionary[key];
-            }
+            get => dictionary[key];
             set
             {
-                if(value == null)
+                if (value == null)
                 {
                     Remove(key);
                     return;
@@ -119,21 +111,15 @@ namespace MathParserTestNS
             dictionary.CopyTo(array, arrayIndex);
         }
 
-        public int Count
-        {
-            get { return dictionary.Count; }
-        }
+        public int Count => dictionary.Count;
 
-        public bool IsReadOnly
-        {
-            get { return dictionary.IsReadOnly; }
-        }
+        public bool IsReadOnly => dictionary.IsReadOnly;
 
         public bool Remove(KeyValuePair<string, Value> item)
         {
-            Value value = item.Value;
+            var value = item.Value;
 
-            bool removed = dictionary.Remove(item);
+            var removed = dictionary.Remove(item);
 
             if (removed && value != null)
                 value.Type = ValueType.Invalid;
@@ -146,7 +132,7 @@ namespace MathParserTestNS
             return dictionary.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return dictionary.GetEnumerator();
         }

@@ -3,26 +3,16 @@
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Exception class for parser related exceptions
+    ///     Exception class for parser related exceptions
     /// </summary>
-    public class ParserException : System.Exception
+    public class ParserException : Exception
     {
-        public ParserException()
-            : base()
-        {
-
-        }
+        public ParserException() { }
 
         public ParserException(string message)
-            : base(message)
-        {
-
-        }
+            : base(message) { }
 
         public ParserException(string message, Exception inner)
-            : base(message, inner)
-        {
-
-        }
+            : base(message, inner) { }
     }
 }

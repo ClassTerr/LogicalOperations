@@ -3,7 +3,7 @@
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Enumeration of value types
+    ///     Enumeration of value types
     /// </summary>
     public enum ValueType
     {
@@ -13,14 +13,14 @@ namespace MathParserTestNS
     }
 
     /// <summary>
-    /// Base class for values
+    ///     Base class for values
     /// </summary>
     /// <remarks>see derived types</remarks>
     public abstract class Value
     {
         public ValueType Type { get; set; }
 
-        public override abstract string ToString();
+        public abstract override string ToString();
 
         public abstract string ToString(IFormatProvider format);
 

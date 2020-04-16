@@ -8,43 +8,41 @@ namespace MathParserTestNS
     [ToolboxBitmap(typeof(TextBox))]
     public class TextBox : System.Windows.Forms.TextBox
     {
-
-        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
-        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, string lParam);
-        private string _cueBannerText = string.Empty;
         public const int ECM_FIRST = 0x1500;
         public const int EM_SETCUEBANNER = ECM_FIRST + 1;
+        private string _cueBannerText = String.Empty;
+
+        private bool _showCueFocused;
 
         /// <summary>Gets or sets the cue text that is displayed on the TextBox control.</summary>
-        [Description("Text that is displayed as Cue banner."), Category("Appearance"), DefaultValue("")]
+        [Description("Text that is displayed as Cue banner.")]
+        [Category("Appearance")]
+        [DefaultValue("")]
         public string CueBannerText
         {
-            get
-            {
-                return _cueBannerText;
-            }
+            get => _cueBannerText;
             set
             {
                 _cueBannerText = value;
-                this.SetCueText(ShowCueFocused);
+                SetCueText(ShowCueFocused);
             }
         }
 
         [Browsable(false)]
         public new bool Multiline
         {
-            get { return base.Multiline; }
-            set { base.Multiline = false; }
+            get => base.Multiline;
+            set => base.Multiline = false;
         }
-
-        private bool _showCueFocused = false;
 
         /// <summary>Gets or sets whether the Cue text should be displyed even when the control has keybord focus.</summary>
         /// <remarks>If true, the Cue text will disappear as soon as the user starts typing.</remarks>
-        [Description("If true, the Cue text will be displayed even when the control has keyboard focus."), Category("Appearance"), DefaultValue(false)]
+        [Description("If true, the Cue text will be displayed even when the control has keyboard focus.")]
+        [Category("Appearance")]
+        [DefaultValue(false)]
         public bool ShowCueFocused
         {
-            get { return _showCueFocused; }
+            get => _showCueFocused;
             set
             {
                 _showCueFocused = value;
@@ -52,9 +50,12 @@ namespace MathParserTestNS
             }
         }
 
+        [DllImport("user32.dll", CharSet = CharSet.Unicode)]
+        public static extern IntPtr SendMessage(IntPtr hWnd, int Msg, IntPtr wParam, string lParam);
+
         private void SetCueText(bool showFocus)
         {
-            SendMessage(this.Handle, EM_SETCUEBANNER, new IntPtr((showFocus) ? 1 : 0), _cueBannerText);
+            SendMessage(Handle, EM_SETCUEBANNER, new IntPtr(showFocus ? 1 : 0), _cueBannerText);
         }
     }
 }

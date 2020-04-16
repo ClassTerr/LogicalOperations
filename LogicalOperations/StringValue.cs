@@ -4,12 +4,12 @@ using System.Globalization;
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Encapsulates a string value (nested expression) in the parser.
+    ///     Encapsulates a string value (nested expression) in the parser.
     /// </summary>
     public class StringValue : Value
     {
         /// <summary>
-        /// Constructs a value of type ValueType.String
+        ///     Constructs a value of type ValueType.String
         /// </summary>
         public StringValue()
         {
@@ -17,12 +17,12 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// String value
+        ///     String value
         /// </summary>
         public string Value { get; set; }
 
         /// <summary>
-        /// Returns the string value
+        ///     Returns the string value
         /// </summary>
         /// <param name="format">unused parameter</param>
         /// <returns>the string value</returns>
@@ -32,7 +32,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Returns the string value
+        ///     Returns the string value
         /// </summary>
         /// <returns>the string value</returns>
         public override string ToString()
@@ -41,8 +41,8 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Returns the parsed double value if the string can
-        /// be parsed to a double
+        ///     Returns the parsed double value if the string can
+        ///     be parsed to a double
         /// </summary>
         /// <param name="format">format to use when parsing string</param>
         /// <returns>value as double</returns>
@@ -52,8 +52,8 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Returns the parsed double value if the string can
-        /// be parsed to a double
+        ///     Returns the parsed double value if the string can
+        ///     be parsed to a double
         /// </summary>
         /// <returns>value as double</returns>
         public override double ToDouble()
@@ -62,7 +62,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set</param>
         public override void SetValue(string value)
@@ -71,7 +71,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set</param>
         public override void SetValue(double value)
@@ -80,7 +80,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set</param>
         /// <param name="format">unused parameter</param>
@@ -90,7 +90,7 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Sets the value
+        ///     Sets the value
         /// </summary>
         /// <param name="value">value to set</param>
         /// <param name="format">format provider to use when converting the value to string</param>

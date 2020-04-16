@@ -1,18 +1,19 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace MathParserTestNS
 {
     /// <summary>
-    /// Dictionary of expressions for caching expressions
+    ///     Dictionary of expressions for caching expressions
     /// </summary>
     public class ExpressionDictionary : IDictionary<string, Expression>
     {
         private IDictionary<string, Expression> dictionary;
 
         /// <summary>
-        /// Creates dictionary
+        ///     Creates dictionary
         /// </summary>
         public ExpressionDictionary()
         {
@@ -20,7 +21,17 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Serializes the expression to the stream
+        ///     Adds an expression to the dictionary with the key
+        /// </summary>
+        /// <param name="key">key to use</param>
+        /// <param name="value">expression to add</param>
+        public void Add(string key, Expression value)
+        {
+            dictionary.Add(key, value);
+        }
+
+        /// <summary>
+        ///     Serializes the expression to the stream
         /// </summary>
         /// <param name="stream">stream to write to</param>
         public void Save(Stream stream)
@@ -30,27 +41,17 @@ namespace MathParserTestNS
         }
 
         /// <summary>
-        /// Attempts to load a serialized expression from the stream
+        ///     Attempts to load a serialized expression from the stream
         /// </summary>
         /// <param name="stream">stream to read from</param>
         public void Load(Stream stream)
         {
             var bin = new BinaryFormatter();
 
-            IDictionary<string, Expression> obj
+            var obj
                 = bin.Deserialize(stream) as IDictionary<string, Expression>;
 
             if (obj != null) dictionary = obj;
-        }
-
-        /// <summary>
-        /// Adds an expression to the dictionary with the key
-        /// </summary>
-        /// <param name="key">key to use</param>
-        /// <param name="value">expression to add</param>
-        public void Add(string key, Expression value)
-        {
-            dictionary.Add(key, value);
         }
 
         #region Standard Dictionary Method Implementations
@@ -60,10 +61,7 @@ namespace MathParserTestNS
             return dictionary.ContainsKey(key);
         }
 
-        public ICollection<string> Keys
-        {
-            get { return dictionary.Keys; }
-        }
+        public ICollection<string> Keys => dictionary.Keys;
 
         public bool Remove(string key)
         {
@@ -75,21 +73,12 @@ namespace MathParserTestNS
             return dictionary.TryGetValue(key, out value);
         }
 
-        public ICollection<Expression> Values
-        {
-            get { return dictionary.Values; }
-        }
+        public ICollection<Expression> Values => dictionary.Values;
 
         public Expression this[string key]
         {
-            get
-            {
-                return dictionary[key];
-            }
-            set
-            {
-                dictionary[key] = value;
-            }
+            get => dictionary[key];
+            set => dictionary[key] = value;
         }
 
         public void Add(KeyValuePair<string, Expression> item)
@@ -112,15 +101,9 @@ namespace MathParserTestNS
             dictionary.CopyTo(array, arrayIndex);
         }
 
-        public int Count
-        {
-            get { return dictionary.Count; }
-        }
+        public int Count => dictionary.Count;
 
-        public bool IsReadOnly
-        {
-            get { return dictionary.IsReadOnly; }
-        }
+        public bool IsReadOnly => dictionary.IsReadOnly;
 
         public bool Remove(KeyValuePair<string, Expression> item)
         {
@@ -132,7 +115,7 @@ namespace MathParserTestNS
             return dictionary.GetEnumerator();
         }
 
-        System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator()
+        IEnumerator IEnumerable.GetEnumerator()
         {
             return dictionary.GetEnumerator();
         }
