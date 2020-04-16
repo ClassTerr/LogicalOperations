@@ -11,7 +11,7 @@ namespace MathParserTestNS
         private readonly IDictionary<string, double> constants;
         private CultureInfo culture;
 
-        private readonly int maxoplength;
+        private readonly int maxOpLength;
         private readonly IDictionary<string, Operator> operators;
 
         /// <summary>
@@ -28,9 +28,9 @@ namespace MathParserTestNS
             {
                 var symbol = pair.Value.Symbol;
 
-                if (symbol.Length > maxoplength)
+                if (symbol.Length > maxOpLength)
                 {
-                    maxoplength = symbol.Length;
+                    maxOpLength = symbol.Length;
                 }
             }
 
@@ -72,13 +72,12 @@ namespace MathParserTestNS
                 // Cannot allow division operator as decimal separator (fa, fa-IR)
                 if (value.NumberFormat.NumberDecimalSeparator == "/")
                 {
-                    throw new ArgumentOutOfRangeException(
-                        String.Format("Unsupported decimal separator / culture {0}", value.Name));
+                    throw new ArgumentOutOfRangeException(String.Format("Unsupported decimal separator / culture {0}",
+                        value.Name));
                 }
 
                 // Cannot allow same separators
-                if (value.NumberFormat.CurrencyGroupSeparator
-                    == value.NumberFormat.NumberDecimalSeparator)
+                if (value.NumberFormat.CurrencyGroupSeparator == value.NumberFormat.NumberDecimalSeparator)
                 {
                     throw new ArgumentOutOfRangeException(
                         String.Format("Same decimal and group separator is unsupported. Culture {0}", value.Name));
@@ -100,8 +99,7 @@ namespace MathParserTestNS
         ///     This validates some syntax errors such as unbalanced paranthesis and invalid characters.
         ///     Exceptions can also be thrown at evaluation time.
         /// </remarks>
-        private void
-            SyntaxCheck(string exp)
+        private void SyntaxCheck(string exp)
         {
             int i = 0, oplen = 0;
             string op = null;
@@ -130,9 +128,9 @@ namespace MathParserTestNS
                         // If it's a function and we are missing parentheses around arguments and bRequireParantheses is true it is an error.
                         // Note that this only checks opening paranthesis, we checked whole expression for balanced paranthesis
                         // earlier but not for each individual function.
-                        if (RequireParentheses && !isTwoArgOp(op) && op != "!" && exp[i] != '(')
+                        if (RequireParentheses && !isTwoArgOp(op) && op != "!" && op != "¬" && exp[i] != '(')
                         {
-                            throw new ParserException("Paranthesis required for arguments -> " +
+                            throw new ParserException("Parenthesis required for arguments -> " +
                                                       exp.Substring(i - oplen));
                         }
 
@@ -172,8 +170,7 @@ namespace MathParserTestNS
         /// </remarks>
         /// <param name="exp">the infix string expression to process</param>
         /// <returns>A tree datastructure of Node objects representing the expression</returns>
-        private Node
-            ParseInfix(string exp)
+        private Node ParseInfix(string exp)
         {
             int i, ma, len;
             string farg, sarg, fop;
@@ -197,7 +194,9 @@ namespace MathParserTestNS
             if (isVariable(exp))
             {
                 // If built in constant put in value otherwise the variable
-                if (constants.ContainsKey(exp)) return new Node(constants[exp]);
+                if (constants.ContainsKey(exp))
+                    return new Node(constants[exp]);
+
                 return new Node(exp);
             }
 
@@ -220,18 +219,24 @@ namespace MathParserTestNS
                     farg = arg(null, exp, i);
                     fop = getOp(exp, i + farg.Length);
 
-                    if (fop == null) throw new Exception("Missing operator");
+                    if (fop == null)
+                        throw new Exception("Missing operator");
 
                     if (isTwoArgOp(fop))
                     {
                         sarg = arg(fop, exp, i + farg.Length + fop.Length);
-                        if (sarg.Equals("")) throw new Exception("Wrong number of arguments to operator " + fop);
+
+                        if (sarg.Equals(""))
+                            throw new Exception("Wrong number of arguments to operator " + fop);
+
                         tree = new Node(operators[fop], ParseInfix(farg), ParseInfix(sarg));
                         i += farg.Length + fop.Length + sarg.Length;
                     }
                     else
                     {
-                        if (farg.Equals("")) throw new Exception("Wrong number of arguments to operator " + fop);
+                        if (farg.Equals(""))
+                            throw new Exception("Wrong number of arguments to operator " + fop);
+
                         tree = new Node(operators[fop], ParseInfix(farg));
                         i += farg.Length + fop.Length;
                     }
@@ -241,7 +246,9 @@ namespace MathParserTestNS
                     if (isTwoArgOp(fop))
                     {
                         farg = arg(fop, exp, i + fop.Length);
-                        if (farg.Equals("")) throw new Exception("Wrong number of arguments to operator " + fop);
+
+                        if (farg.Equals(""))
+                            throw new Exception("Wrong number of arguments to operator " + fop);
 
                         if (tree == null)
                         {
@@ -249,7 +256,8 @@ namespace MathParserTestNS
                             {
                                 tree = new Node(0D);
                             }
-                            else throw new Exception("Wrong number of arguments to operator " + fop);
+                            else
+                                throw new Exception("Wrong number of arguments to operator " + fop);
                         }
 
                         tree = new Node(operators[fop], tree, ParseInfix(farg));
@@ -258,7 +266,10 @@ namespace MathParserTestNS
                     else
                     {
                         farg = arg(fop, exp, i + fop.Length);
-                        if (farg.Equals("")) throw new Exception("Wrong number of arguments to operator " + fop);
+
+                        if (farg.Equals(""))
+                            throw new Exception("Wrong number of arguments to operator " + fop);
+
                         tree = new Node(operators[fop], ParseInfix(farg));
                         i += farg.Length + fop.Length;
                     }
@@ -282,8 +293,7 @@ namespace MathParserTestNS
         /// <summary>Matches all paranthesis and returns true if they all match or false if they do not.</summary>
         /// <param name="exp">expression to check, infix notation</param>
         /// <returns>true if ok false otherwise</returns>
-        private bool
-            matchParant(string exp)
+        private bool matchParant(string exp)
         {
             var count = 0;
             var i = 0;
@@ -308,23 +318,21 @@ namespace MathParserTestNS
         /// <summary>Checks if the character is alphabetic.</summary>
         /// <param name="ch">Character to check</param>
         /// <returns>true or false</returns>
-        private bool
-            isAlpha(char ch)
+        private bool isAlpha(char ch)
         {
             return ch >= 'a' && ch <= 'z' || ch >= 'A' && ch <= 'Z';
         }
 
-
         /// <summary>Checks if the string can be considered to be a valid variable name.</summary>
         /// <param name="str">The String to check</param>
         /// <returns>true or false</returns>
-        private bool
-            isVariable(string str)
+        private bool isVariable(string str)
         {
             var i = 0;
             var len = str.Length;
 
-            if (isConstant(str)) return false;
+            if (isConstant(str))
+                return false;
 
             for (i = 0; i < len; i++)
             {
@@ -337,22 +345,18 @@ namespace MathParserTestNS
             return true;
         }
 
-
         /// <summary>Checks if the character is a digit</summary>
         /// <param name="ch">Character to check</param>
         /// <returns>true or false</returns>
-        private bool
-            isConstant(char ch)
+        private bool isConstant(char ch)
         {
             return Char.IsDigit(ch);
         }
 
-
         /// <summary>Checks to se if a string is numeric</summary>
         /// <param name="exp">String to check</param>
         /// <returns>true if the string was numeric, false otherwise</returns>
-        private bool
-            isConstant(string exp)
+        private bool isConstant(string exp)
         {
             var val = 0D;
             var ok = Double.TryParse(exp, NumberStyles.Any, culture, out val);
@@ -364,24 +368,26 @@ namespace MathParserTestNS
         /// </summary>
         /// <param name="str">The string to check</param>
         /// <returns>true if it is an acceptable operator, false otherwise.</returns>
-        private bool
-            isOperator(string str)
+        private bool isOperator(string str)
         {
             return operators.ContainsKey(str);
         }
-
 
         /// <summary>
         ///     Checks to see if the operator name represented by str takes two arguments.
         /// </summary>
         /// <param name="str">The string to check</param>
         /// <returns>true if the operator takes two arguments, false otherwise.</returns>
-        private bool
-            isTwoArgOp(string str)
+        private bool isTwoArgOp(string str)
         {
-            if (str == null) return false;
+            if (str == null)
+                return false;
+
             object o = operators[str];
-            if (o == null) return false;
+
+            if (o == null)
+                return false;
+
             return ((Operator) o).Arguments == 2;
         }
 
@@ -390,13 +396,11 @@ namespace MathParserTestNS
         /// </summary>
         /// <param name="s">the character to check</param>
         /// <returns>true if the char is valid, false otherwise.</returns>
-        private bool
-            isAllowedSym(char s)
+        private bool isAllowedSym(char s)
         {
             return s == ',' || s == '.' || s == ')' || s == '(' || s == '>' || s == '<' || s == '&' || s == '=' ||
-                   s == '|'
-                   || culture.NumberFormat.CurrencyGroupSeparator.ToCharArray().Contains(s)
-                   || culture.NumberFormat.CurrencyDecimalSeparator.ToCharArray().Contains(s);
+                   s == '|' || culture.NumberFormat.CurrencyGroupSeparator.ToCharArray().Contains(s) ||
+                   culture.NumberFormat.CurrencyDecimalSeparator.ToCharArray().Contains(s);
         }
 
         /// <summary>
@@ -404,8 +408,7 @@ namespace MathParserTestNS
         /// </summary>
         /// <param name="str">The string to process</param>
         /// <returns>A copy of the string stripped of all spaces</returns>
-        private string
-            skipSpaces(string str)
+        private string skipSpaces(string str)
         {
             var i = 0;
             var len = str.Length;
@@ -430,8 +433,7 @@ namespace MathParserTestNS
         /// <param name="exp">the string to search in</param>
         /// <param name="index">the index of the opening left paranthesis</param>
         /// <returns>the index of the matching closing right paranthesis</returns>
-        private int
-            match(string exp, int index)
+        private int match(string exp, int index)
         {
             var len = exp.Length;
             var i = index;
@@ -448,7 +450,8 @@ namespace MathParserTestNS
                     count--;
                 }
 
-                if (count == 0) return i;
+                if (count == 0)
+                    return i;
 
                 i++;
             }
@@ -462,18 +465,17 @@ namespace MathParserTestNS
         /// <param name="exp">the infix string expression to look in</param>
         /// <param name="index">the index to start searching from</param>
         /// <returns>the operator if any or null.</returns>
-        private string
-            getOp(string exp, int index)
+        private string getOp(string exp, int index)
         {
             string tmp;
             var i = 0;
             var len = exp.Length;
 
-            for (i = 0; i < maxoplength; i++)
+            for (i = 0; i < maxOpLength; i++)
             {
-                if (index >= 0 && index + maxoplength - i <= len)
+                if (index >= 0 && index + maxOpLength - i <= len)
                 {
-                    tmp = exp.Substring(index, maxoplength - i);
+                    tmp = exp.Substring(index, maxOpLength - i);
 
                     if (isOperator(tmp))
                     {
@@ -492,8 +494,7 @@ namespace MathParserTestNS
         /// <param name="exp">the infix string expression</param>
         /// <param name="index">the index to start the search from</param>
         /// <returns>the argument to the operator</returns>
-        private string
-            arg(string _operator, string exp, int index)
+        private string arg(string _operator, string exp, int index)
         {
             int ma, i, prec = -1;
             var len = exp.Length;
@@ -542,7 +543,6 @@ namespace MathParserTestNS
             return str.ToString();
         }
 
-
         /// <summary>
         ///     Returns an operator at the end of the String str if present.
         /// </summary>
@@ -552,8 +552,7 @@ namespace MathParserTestNS
         /// </remarks>
         /// <param name="str">part of infix string expression to search</param>
         /// <returns>the operator if found or null otherwise</returns>
-        private string
-            backTrack(string str)
+        private string backTrack(string str)
         {
             var i = 0;
             var len = str.Length;
@@ -561,10 +560,10 @@ namespace MathParserTestNS
 
             try
             {
-                for (i = 0; i <= maxoplength; i++)
+                for (i = 0; i <= maxOpLength; i++)
                 {
-                    if ((op = getOp(str, len - 1 - maxoplength + i)) != null
-                        && len - maxoplength - 1 + i + op.Length == len)
+                    if ((op = getOp(str, len - 1 - maxOpLength + i)) != null &&
+                        len - maxOpLength - 1 + i + op.Length == len)
                     {
                         return op;
                     }

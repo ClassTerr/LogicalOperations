@@ -12,10 +12,8 @@ namespace MathParserTestNS
     {
         private CultureInfo culture;
 
-        private readonly int maxoplength;
+        private readonly int maxOpLength;
 
-        private readonly IDictionary<string, Operator> ops;
-        private readonly IDictionary<string, double> spconst;
         private readonly TreeParser treeParser;
 
         /// <summary>
@@ -29,22 +27,22 @@ namespace MathParserTestNS
 
             // Add all valid operators.
             var operators = new DefaultOperators();
-            ops = new Dictionary<string, Operator>();
+            IDictionary<string, Operator> ops = new Dictionary<string, Operator>();
 
             foreach (var op in operators.Operators)
             {
                 var symbol = op.Symbol;
 
-                if (symbol.Length > maxoplength)
+                if (symbol.Length > maxOpLength)
                 {
-                    maxoplength = symbol.Length;
+                    maxOpLength = symbol.Length;
                 }
 
                 ops.Add(symbol, op);
             }
 
             // Constants
-            spconst = new Dictionary<string, double>();
+            IDictionary<string, double> spconst = new Dictionary<string, double>();
             spconst.Add("euler", Math.E);
             spconst.Add("pi", Math.PI);
             spconst.Add("nan", Double.NaN);
@@ -140,7 +138,6 @@ namespace MathParserTestNS
         public double
             Parse(string exp)
         {
-            var ans = 0d;
             Expression expression;
 
             if (String.IsNullOrWhiteSpace(exp))
@@ -148,6 +145,8 @@ namespace MathParserTestNS
 
             try
             {
+                double ans;
+
                 if (Expressions.TryGetValue(exp, out expression))
                 {
                     ans = EvalExpression(expression);

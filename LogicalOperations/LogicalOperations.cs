@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -79,7 +81,7 @@ namespace MathParserTestNS
             shortExpr.Add(n);
         }
 
-        private void Increment(List<int> lst)
+        private void Increment(IList<int> lst)
         {
             for (var i = lst.Count - 1; i >= 0; i--)
             {
@@ -101,7 +103,6 @@ namespace MathParserTestNS
         {
             var op = new DefaultOperators();
             var set = new HashSet<string>();
-            var res = new List<string>();
 
             foreach (var item in op.Operators)
                 s = s.Replace(item.Symbol, " ");
@@ -114,15 +115,14 @@ namespace MathParserTestNS
                 if (IsVariable(item))
                     set.Add(item);
 
-            foreach (var item in set)
-                res.Add(item);
+            var res = set.ToList();
 
             res.Sort();
 
             return res;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void BuildTruthTableClick(object sender, EventArgs e)
         {
             labelCounter = 0;
             listView1.Items.Clear();
@@ -134,12 +134,11 @@ namespace MathParserTestNS
             var oParser = new ExpressionParser();
 
             var sFunction = BOX.Text.Trim();
-            double fResult = 0f;
 
             try
             {
                 // Parse expression once
-                fResult = oParser.Parse(sFunction);
+                oParser.Parse(sFunction);
 
                 // Fetch parsed tree
                 var expression = oParser.Expressions[sFunction];
@@ -186,10 +185,9 @@ namespace MathParserTestNS
                         oParser.Values.Add(varNames[j], sets[j]);
 
                     for (var j = 0; j < shortExpr.Count; j++)
-                        table[i, j + vars.Count + 1] = oParser.Parse(shortExpr[j].FullExpression).ToString();
+                        table[i, j + vars.Count + 1] = oParser.Parse(shortExpr[j].FullExpression).ToString(CultureInfo.InvariantCulture);
 
-                    var row = new ListViewItem();
-                    row.Text = table[i, 0];
+                    var row = new ListViewItem { Text = table[i, 0] };
 
                     for (var j = 1; j < w; j++)
                         row.SubItems.Add(table[i, j]);
@@ -208,7 +206,7 @@ namespace MathParserTestNS
             }
         }
 
-        private void insert_Click(object sender, EventArgs e)
+        private void OperationButtonClick(object sender, EventArgs e)
         {
             var s = (sender as Button).Text;
             var s1 = BOX.Text.Substring(0, BOX.SelectionStart);
@@ -222,7 +220,7 @@ namespace MathParserTestNS
             BOX.Focus();
         }
 
-        private void button10_Click(object sender, EventArgs e)
+        private void BuildNormalFormsClick(object sender, EventArgs e)
         {
             DNF.Clear();
             CNF.Clear();
@@ -240,7 +238,7 @@ namespace MathParserTestNS
 
                         for (var j = 1; j <= varNames.Count; j++)
                             if (table[i, j] == "0")
-                                DNF.Text += "!" + table[0, j];
+                                DNF.Text += "¬" + table[0, j];
                             else
                                 DNF.Text += table[0, j];
 
@@ -261,10 +259,10 @@ namespace MathParserTestNS
 
                         for (var j = 1; j <= varNames.Count; j++)
                         {
-                            if (!f) CNF.Text += " V ";
+                            if (!f) CNF.Text += " ⋁ ";
 
                             if (table[i, j] == "1")
-                                CNF.Text += "!" + table[0, j];
+                                CNF.Text += "¬" + table[0, j];
                             else
                                 CNF.Text += table[0, j];
 
@@ -284,7 +282,7 @@ namespace MathParserTestNS
             }
         }
 
-        private void button12_Click(object sender, EventArgs e)
+        private void AboutClick(object sender, EventArgs e)
         {
             var a = new About();
             a.ShowDialog(this);

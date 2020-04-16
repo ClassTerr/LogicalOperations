@@ -8,8 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MathParserTestNS.Properties
-{
+namespace MathParserTestNS.Properties {
+    using System;
+    
+    
     /// <summary>
     ///   Класс ресурса со строгой типизацией для поиска локализованных строк и т.д.
     /// </summary>
@@ -17,7 +19,7 @@ namespace MathParserTestNS.Properties
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,9 +63,9 @@ namespace MathParserTestNS.Properties
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap info_1459077_960_720 {
+        internal static System.Drawing.Bitmap InfoIcon {
             get {
-                object obj = ResourceManager.GetObject("info-1459077_960_720", resourceCulture);
+                object obj = ResourceManager.GetObject("InfoIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -71,59 +73,9 @@ namespace MathParserTestNS.Properties
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap info_1459077_960_7201 {
+        internal static System.Drawing.Bitmap Raccoon {
             get {
-                object obj = ResourceManager.GetObject("info-1459077_960_7201", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap info_1459077_960_7202 {
-            get {
-                object obj = ResourceManager.GetObject("info-1459077_960_7202", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap information1 {
-            get {
-                object obj = ResourceManager.GetObject("information1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap main_main_fabric_еноты {
-            get {
-                object obj = ResourceManager.GetObject("main_main_fabric_еноты", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap main_main_fabric_еноты1 {
-            get {
-                object obj = ResourceManager.GetObject("main_main_fabric_еноты1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap л {
-            get {
-                object obj = ResourceManager.GetObject("л", resourceCulture);
+                object obj = ResourceManager.GetObject("Raccoon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
