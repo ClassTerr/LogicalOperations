@@ -1,16 +1,6 @@
-﻿/*
- * Author: Patrik Lundin, patrik@lundin.info
- * Web: http://www.lundin.info
- * 
- * Source code released under the Microsoft Public License (Ms-PL) 
- * http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
-*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System;
 
-namespace info.lundin.math
+namespace MathParserTestNS
 {
     /// <summary>
     /// Class Operator, represents an Operator by holding information about it's symbol

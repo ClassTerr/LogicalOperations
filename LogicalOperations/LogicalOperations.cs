@@ -1,28 +1,13 @@
-﻿/*
- * Author: Patrik Lundin, patrik@lundin.info
- * Web: http://www.lundin.info
- * 
- * Source code released under the Microsoft Public License (Ms-PL) 
- * http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
-*/
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Collections;
-using System.ComponentModel;
-using System.Drawing;
-using System.Text;
-using System.Windows.Forms;
-using System.Reflection;
-using info.lundin.math;
-using System.Diagnostics;
-using System.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
-namespace info.lundin.math
+namespace MathParserTestNS
 {
-    public partial class MathParserTest : Form
+    public partial class LogicalOperations : Form
     {
-        public MathParserTest()
+        public LogicalOperations()
         {
             InitializeComponent();
         }
@@ -51,7 +36,7 @@ namespace info.lundin.math
                 return;
             }
 
-            if (n.SecondArgument == null)//кусь говнокод конечно, но в 3:20 ночи я не хо придумывать что-то лучше
+            if (n.SecondArgument == null)
             {
                 deep++;
                 LPK(n.FirstArgument);

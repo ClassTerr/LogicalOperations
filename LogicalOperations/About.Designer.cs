@@ -1,4 +1,4 @@
-﻿namespace info.lundin.math
+﻿namespace MathParserTestNS
 {
     partial class About
     {
@@ -58,7 +58,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::info.lundin.math.Properties.Resources.л;
+            this.pictureBox1.Image = global::MathParserTestNS.Properties.Resources.л;
             this.pictureBox1.Location = new System.Drawing.Point(235, 67);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(220, 138);

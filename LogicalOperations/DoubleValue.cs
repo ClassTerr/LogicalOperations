@@ -1,17 +1,7 @@
-﻿/*
- * Author: Patrik Lundin, patrik@lundin.info
- * Web: http://www.lundin.info
- * 
- * Source code released under the Microsoft Public License (Ms-PL) 
- * http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
-*/
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 
-namespace info.lundin.math
+namespace MathParserTestNS
 {
     /// <summary>
     /// Encapsulates a double value for parser to use as a value when evaluating expressions

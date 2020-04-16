@@ -1,4 +1,4 @@
-﻿namespace info.lundin.math
+﻿namespace MathParserTestNS
 {
     partial class VariableValue
     {

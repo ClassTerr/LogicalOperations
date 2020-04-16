@@ -1,22 +1,10 @@
-/*
- * Author: Patrik Lundin, patrik@lundin.info
- * Web: http://www.lundin.info
- * 
- * Source code released under the Microsoft Public License (Ms-PL) 
- * http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
-*/
-namespace info.lundin.math
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+
+namespace MathParserTestNS
 {
-
-	using System;
-	using System.IO;
-	using System.Text;
-	using System.Collections;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Globalization;
-
-	/// <summary>
+    /// <summary>
 	///	Class ExpressionParser, this class evaluates a mathematical expression given 
 	///	as a string to a double value.	
 	/// </summary>

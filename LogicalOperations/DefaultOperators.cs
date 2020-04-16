@@ -1,16 +1,6 @@
-﻿/*
- * Author: Patrik Lundin, patrik@lundin.info
- * Web: http://www.lundin.info
- * 
- * Source code released under the Microsoft Public License (Ms-PL) 
- * http://www.microsoft.com/en-us/openness/licenses.aspx#MPL
-*/
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace info.lundin.math
+namespace MathParserTestNS
 {
     /// <summary>
     /// Provides operators for evaluation
@@ -33,13 +23,9 @@ namespace info.lundin.math
                     new Operator( "~",	2, 4, (p, a, b) => { return (p.EvalTree(a) == p.EvalTree(b)) ? 1 : 0;} ),
                     new Operator( "⊕",	2, 4, (p, a, b) => { return (p.EvalTree(a) != p.EvalTree(b)) ? 1 : 0;} ),
 
-                    /////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    // Priority is not determined
                     new Operator( "|",	2, 4, (p, a, b) => { return (p.EvalTree(a) == 1 && p.EvalTree(b) == 1) ? 0 : 1;} ),
                     new Operator( "↓",	2, 4, (p, a, b) => { return (p.EvalTree(a) == 1 || p.EvalTree(b) == 1) ? 0 : 1;} ),
-                    //кусь для этих двух вообще не понятен приоритет
-                    //если раскрыть как !a v !b, тогда можно догадаться что приоритеты 2 и 3
-                    //но разные калькуляторы показывают разное, разные сайты говорят разное... НИПАНЯТНА!!1!
-                    //Короче, пока оставляю такие же как и у оп. Жегалкина и эквиваленции
             };
         }
 

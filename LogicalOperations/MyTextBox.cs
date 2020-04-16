@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace info.lundin.math
+namespace MathParserTestNS
 {
     [ToolboxBitmap(typeof(TextBox))]
     public class TextBox : System.Windows.Forms.TextBox

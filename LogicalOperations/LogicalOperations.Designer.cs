@@ -1,6 +1,6 @@
-﻿namespace info.lundin.math
+﻿namespace MathParserTestNS
 {
-    partial class MathParserTest
+    partial class LogicalOperations
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MathParserTest));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LogicalOperations));
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
@@ -49,7 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button12 = new System.Windows.Forms.Button();
-            this.BOX = new info.lundin.math.TextBox();
+            this.BOX = new TextBox();
             this.SuspendLayout();
             // 
             // textBox2
@@ -219,7 +219,7 @@
             // 
             resources.ApplyResources(this.button12, "button12");
             this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.Image = global::info.lundin.math.Properties.Resources.information1;
+            this.button12.Image = global::MathParserTestNS.Properties.Resources.information1;
             this.button12.Name = "button12";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.button12_Click);
@@ -282,7 +282,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button12;
-        private info.lundin.math.TextBox BOX;
+        private TextBox BOX;
     }
 }
 
