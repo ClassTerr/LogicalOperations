@@ -841,7 +841,7 @@
     <value>BOX</value>
   </data>
   <data name="&gt;&gt;BOX.Type" xml:space="preserve">
-    <value>MathParserTestNS.TextBox, MathParserTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
+    <value>LogicalOperations.TextBox, MathParserTest, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;BOX.Parent" xml:space="preserve">
     <value>$this</value>

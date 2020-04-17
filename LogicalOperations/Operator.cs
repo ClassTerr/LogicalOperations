@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Class Operator, represents an Operator by holding information about it's symbol

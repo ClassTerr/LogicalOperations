@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Encapsulates the parsed expression tree and

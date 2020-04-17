@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     public static class MathExtra
     {

@@ -1,4 +1,4 @@
-﻿namespace MathParserTestNS {
+﻿namespace LogicalOperations {
     /// <summary>
     ///     Enumeration of value types
     /// </summary>

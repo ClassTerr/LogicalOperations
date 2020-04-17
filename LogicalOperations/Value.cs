@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Base class for values

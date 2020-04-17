@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     public class TreeParser
     {
@@ -128,7 +128,7 @@ namespace MathParserTestNS
                         // If it's a function and we are missing parentheses around arguments and bRequireParantheses is true it is an error.
                         // Note that this only checks opening paranthesis, we checked whole expression for balanced paranthesis
                         // earlier but not for each individual function.
-                        if (RequireParentheses && !isTwoArgOp(op) && op != "!" && op != "¬" && exp[i] != '(')
+                        if (RequireParentheses && !isTwoArgOp(op) && op != "!" && op != "¬" && op != "￢" && exp[i] != '(')
                         {
                             throw new ParserException("Parenthesis required for arguments -> " +
                                                       exp.Substring(i - oplen));

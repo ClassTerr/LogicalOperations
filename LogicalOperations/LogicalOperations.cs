@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     public partial class LogicalOperations : Form
     {
@@ -199,6 +199,8 @@ namespace MathParserTestNS
 
                 if (textBox2.Text == "")
                     textBox2.Text = "Таблица успешно построена!";
+
+                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             }
             catch (Exception ex)
             {

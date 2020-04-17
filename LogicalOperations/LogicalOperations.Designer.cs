@@ -1,4 +1,4 @@
-﻿namespace MathParserTestNS
+﻿namespace LogicalOperations
 {
     partial class LogicalOperations
     {
@@ -49,7 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.button12 = new System.Windows.Forms.Button();
-            this.BOX = new MathParserTestNS.TextBox();
+            this.BOX = new TextBox();
             this.button11 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.button14 = new System.Windows.Forms.Button();
@@ -232,7 +232,7 @@
             // 
             resources.ApplyResources(this.button12, "button12");
             this.button12.FlatAppearance.BorderSize = 0;
-            this.button12.Image = global::MathParserTestNS.Properties.Resources.InfoIcon;
+            this.button12.Image = global::LogicalOperations.Properties.Resources.InfoIcon;
             this.button12.Name = "button12";
             this.button12.UseVisualStyleBackColor = true;
             this.button12.Click += new System.EventHandler(this.AboutClick);

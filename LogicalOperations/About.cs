@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     public partial class About : Form
     {

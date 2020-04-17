@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     internal static class Program
     {

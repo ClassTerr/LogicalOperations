@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Encapsulates a string value (nested expression) in the parser.

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Dictionary of values

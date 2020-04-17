@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MathParserTestNS.Properties {
+namespace LogicalOperations.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

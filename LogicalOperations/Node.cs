@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Class Node, represents a Node in a tree data structure representation of a mathematical expression.

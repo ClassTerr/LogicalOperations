@@ -1,4 +1,4 @@
-﻿namespace MathParserTestNS
+﻿namespace LogicalOperations
 {
     partial class VariableValue
     {

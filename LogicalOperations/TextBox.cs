@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Runtime.InteropServices;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     [ToolboxBitmap(typeof(TextBox))]
     public class TextBox : System.Windows.Forms.TextBox

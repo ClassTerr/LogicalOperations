@@ -1,4 +1,4 @@
-﻿namespace MathParserTestNS {
+﻿namespace LogicalOperations {
     /// <summary>
     ///     Types of Node(s)
     /// </summary>

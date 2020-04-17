@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+
 // ReSharper disable CompareOfFloatsByEqualityOperator
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Provides operators for evaluation
@@ -14,8 +15,11 @@ namespace MathParserTestNS
             {
                 new Operator("!", 1, 1, (p, a, b) => p.EvalTree(a) == 1 ? 0 : 1),
                 new Operator("¬", 1, 1, (p, a, b) => p.EvalTree(a) == 1 ? 0 : 1),
+                new Operator("￢", 1, 1, (p, a, b) => p.EvalTree(a) == 1 ? 0 : 1),
                 new Operator("⋀", 2, 2, (p, a, b) => p.EvalTree(a) == 1 && p.EvalTree(b) == 1 ? 1 : 0),
+                new Operator("∧", 2, 2, (p, a, b) => p.EvalTree(a) == 1 && p.EvalTree(b) == 1 ? 1 : 0),
                 new Operator("⋁", 2, 3, (p, a, b) => p.EvalTree(a) == 1 || p.EvalTree(b) == 1 ? 1 : 0),
+                new Operator("∨", 2, 3, (p, a, b) => p.EvalTree(a) == 1 || p.EvalTree(b) == 1 ? 1 : 0),
                 new Operator("V", 2, 3, (p, a, b) => p.EvalTree(a) == 1 && p.EvalTree(b) == 1 ? 1 : 0),
                 new Operator("→", 2, 4, (p, a, b) => p.EvalTree(a) == 1 && p.EvalTree(b) == 0 ? 0 : 1),
                 new Operator("↔", 2, 4, (p, a, b) => p.EvalTree(a) == p.EvalTree(b) ? 1 : 0),

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace MathParserTestNS
+namespace LogicalOperations
 {
     /// <summary>
     ///     Encapsulates a double value for parser to use as a value when evaluating expressions
